@@ -17,7 +17,5 @@ class ZRSReaderTest extends PHPUnit_Framework_TestCase
         $result = $instance->getBuildings();
 
         $this->assertEquals(64, $result);
-
-        $this->fail("This is just a dummy test.");
     }
 }

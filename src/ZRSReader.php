@@ -38,7 +38,6 @@ class ZRSReader
     public function getBuildings()
     {
         $document = $this->getSearchPage();
-        echo $document->saveHTML();
         $xpath    = new DOMXPath($document);
 
         /* @var $options DOMNodeList */
@@ -73,8 +72,9 @@ class ZRSReader
      */
     private function parseHTML($htmlContents)
     {
+        $document = new DOMDocument();
         $previous = libxml_use_internal_errors(true);
-        $document = DOMDocument::loadHTML($htmlContents);
+        $document->loadHTML($htmlContents);
         libxml_use_internal_errors($previous);
 
         return $document;
