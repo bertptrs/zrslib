@@ -1,0 +1,7 @@
+# Ignore composer files
+composer.lock
+vendor
+
+
+# Ignore vim swap files
+*.swp

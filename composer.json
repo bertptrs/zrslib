@@ -1,0 +1,25 @@
+{
+    "name": "bertptrs/zrslib",
+    "description": "A library for querying the Leidenuniv ZRS.",
+    "require": {
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Bert Peters",
+            "email": "bert.ljpeters@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "zrslib\\": "src",
+            "zrslib\\tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
