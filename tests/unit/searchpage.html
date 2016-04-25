@@ -1,0 +1,197 @@
+<script>
+var clockid=new Array()
+var clockidoutside=new Array()
+var i_clock=-1
+var thistime= new Date()
+var hours=thistime.getHours()
+var minutes=thistime.getMinutes()
+var seconds=thistime.getSeconds()
+if (eval(hours) <10) {hours="0"+hours}
+if (eval(minutes) < 10) {minutes="0"+minutes}
+if (seconds < 10) {seconds="0"+seconds}
+var thistime = hours+":"+minutes+"::"+seconds 
+function writeclock() {
+    i_clock++
+    if (document.all || document.getElementById || document.layers) {
+        clockid[i_clock]="clock"+i_clock
+        document.write("<span id='"+clockid[i_clock]
+        +"' style='position:relative'>"+thistime+"</span>" )
+    }
+} 
+function clockon() {
+    thistime= new Date()
+    hours=thistime.getHours()
+    minutes=thistime.getMinutes()
+    seconds=thistime.getSeconds()
+    if (eval(hours) <10) {hours="0"+hours}
+    if (eval(minutes) < 10) {minutes="0"+minutes}
+    if (seconds < 10) {seconds="0"+seconds}
+    thistime = hours+":"+minutes 
+if (document.all) {
+        for (i=0;i<=clockid.length-1;i++) {
+            var thisclock=eval(clockid[i])
+            thisclock.innerHTML=thistime
+        }
+    } 
+if (document.getElementById) {
+        for (i=0;i<=clockid.length-1;i++) {
+            document.getElementById(clockid[i]).innerHTML=thistime
+        }
+    }
+    var timer=setTimeout("clockon()",1000)
+}
+window.onload=clockon
+</script> 
+
+<!DOCTYPE HTML PUBLIC -//W3C//DTD HTML 4.0 Transitional//EN><!Co Dreef / Eelco de Graaff Faculteit der Rechtsgeleerdheid Universiteit Leiden><!e-mail j.dreef@law.leidenuniv.nl ><HTML><HEAD><TITLE>ZRS - Raadplegen Zaal Reservering Systeem</TITLE><LINK REL=StyleSheet HREF="ul_style.css" TITLE="Universiteit Leiden"><META NAME="Generator" CONTENT="PHP"><META NAME="Author" CONTENT="Co Dreef / Eelco de Graaff"><META NAME="Keywords" CONTENT="Zaal Reservering Systeem"><META NAME="Description" CONTENT="Dynamic query ZRS v2011.1"></HEAD><BODY><table with=100% border=0 cellpadding=0 cellspacing=0><tr><td width=14 background=wit.jpg></td><td width=165 height=108 background=ul_logo.jpg><a href=http://www.leidenuniv.nl><img src=transp.gif width=165 height=108 border=0></a></td><td width=20 background=wit.jpg></td><td><H3>ZRS - Zaal Reserverings Systeem</H3></td></tr></table><table with=100% border=0 cellpadding=0 cellspacing=0><tr><td width=14 background=blauw.jpg></td><td width=165 background=ul_balk.jpg></td><td width=20 background=wit.jpg></td><td ><form action=query.php method=post><table border=0><tr><td></td><td><p>Dag</p></td><td><p>Maand</p></td><td><p>Jaar</p></td><td></td></tr><tr><td><input type="checkbox" name="quickselect" value=checked  ><b> Nu</b> Lopende reserveringen <b>of</b>&nbsp&nbsp</td><td><select name=day><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5<option value=6>6<option value=7>7<option value=8>8<option value=9>9<option value=10>10<option value=11>11<option value=12>12<option value=13>13<option value=14>14<option value=15>15<option value=16>16<option value=17>17<option value=18>18<option value=19>19<option value=20>20<option value=21>21<option value=22>22<option value=23>23<option value=24>24<option value=25 selected>25<option value=26>26<option value=27>27<option value=28>28<option value=29>29<option value=30>30<option value=31>31</select></td><td><select name=month><option value=1>1<option value=2>2<option value=3>3<option value=4 selected>4<option value=5>5<option value=6>6<option value=7>7<option value=8>8<option value=9>9<option value=10>10<option value=11>11<option value=12>12</select></td><td><select name=year><option value=2010>2010<option value=2011>2011<option value=2012>2012<option value=2013>2013<option value=2014>2014<option value=2015>2015<option value=2016 selected>2016<option value=2017>2017<option value=2018>2018<option value=2019>2019<option value=2020>2020<option value=2021>2021</select></td></tr></tr></table><input type=submit name=submit value=Uitvoeren> <br><br><select name="res_instantie">
+<option value="_ALL_">Alle organisaties</option> <option value="HUM-ARAB+Arabische taal en cultuur">Arabische taal en cultuur</option>
+ <option value="ARCH+Archeologie">Archeologie</option>
+ <option value="HUM-BB+Book and byte">Book and byte</option>
+ <option value="OUDE_UB+Bureau van de universiteit">Bureau van de universiteit</option>
+ <option value="FWN-CML+Centrum voor milieuwetenschappen leiden">Centrum voor milieuwetenschappen leiden</option>
+ <option value="HUM-CPA+Creative performing arts">Creative performing arts</option>
+ <option value="HUM-DUI+Duitse taal en cultuur">Duitse taal en cultuur</option>
+ <option value="HUM-DS+Dutch studies">Dutch studies</option>
+ <option value="HUM-EGYP+Egyptische taal en cultuur">Egyptische taal en cultuur</option>
+ <option value="HUM-ENG+Engelse taal en cultuur">Engelse taal en cultuur</option>
+ <option value="HUM-EUS+Europese unie studies">Europese unie studies</option>
+ <option value="999+Externe zalen (niet universitair)">Externe zalen (niet universitair)</option>
+ <option value="MED+Fac. geneeskunde afd. sz">Fac. geneeskunde afd. sz</option>
+ <option value="JUR+Faculteit der rechtsgeleerdheid ">Faculteit der rechtsgeleerdheid </option>
+ <option value="FWN+Faculteit wis- en natuurkunde">Faculteit wis- en natuurkunde</option>
+ <option value="FGGA+Faculty governance and global affairs">Faculty governance and global affairs</option>
+ <option value="FGGA-BSK+Fgga-bestuurskunde">Fgga-bestuurskunde</option>
+ <option value="HUM-FPHS+Film and photographic studies">Film and photographic studies</option>
+ <option value="HUM-FR+Franse taal en cultuur">Franse taal en cultuur</option>
+ <option value="FSW+Fsw fac. der sociale wetenschappen ">Fsw fac. der sociale wetenschappen </option>
+ <option value="FSW-CWTS+Fsw-centre for science & techn. studies">Fsw-centre for science & techn. studies</option>
+ <option value="FSW-CANS+Fsw-cult antropologie/ ontw. sociologie">Fsw-cult antropologie/ ontw. sociologie</option>
+ <option value="FSW-LO+Fsw-iclon">Fsw-iclon</option>
+ <option value="FSW-PEDA+Fsw-pedagogische wetenschappen">Fsw-pedagogische wetenschappen</option>
+ <option value="FSW-POWE+Fsw-politieke wetenschap">Fsw-politieke wetenschap</option>
+ <option value="FSW-PSYC+Fsw-psychologie">Fsw-psychologie</option>
+ <option value="HUM-GS+Geschiedenis">Geschiedenis</option>
+ <option value="HUM-GODG+Godgeleerdheid">Godgeleerdheid</option>
+ <option value="GOR+Gorlaeus laboratorium">Gorlaeus laboratorium</option>
+ <option value="HUM-GLTC+Grieks en latijnse taal en cultuur">Grieks en latijnse taal en cultuur</option>
+ <option value="HUM-HATC+Hebreeuwse & armeense talen en culturen">Hebreeuwse & armeense talen en culturen</option>
+ <option value="HUM-HJS+Hebreeuwse en joodse studies">Hebreeuwse en joodse studies</option>
+ <option value="HUM-ALG+Hum-algemeen">Hum-algemeen</option>
+ <option value="HUM-AZIE+Hum-azie">Hum-azie</option>
+ <option value="HUM-MEDIA+Hum-media">Hum-media</option>
+ <option value="HUY+Huygens laboratorium">Huygens laboratorium</option>
+ <option value="FGGA-ISGA+Inst. of security of global affairs ">Inst. of security of global affairs </option>
+ <option value="FWN-IBL+Institute of biology leiden">Institute of biology leiden</option>
+ <option value="HUM-LUC+Instituut lucas">Instituut lucas</option>
+ <option value="HUM-MAN+Internationaal management en culltuur">Internationaal management en culltuur</option>
+ <option value="HUM-INT+Internationale studies">Internationale studies</option>
+ <option value="HUM-ISL+Islamic studies">Islamic studies</option>
+ <option value="HUM-ISLM+Islamologie">Islamologie</option>
+ <option value="HUM-ITAL+Italiaanse taal en cultuur">Italiaanse taal en cultuur</option>
+ <option value="HUM-JNM+Journalistiek en nieuwe media">Journalistiek en nieuwe media</option>
+ <option value="JURPAO+Juridisch post academisch onderwijs">Juridisch post academisch onderwijs</option>
+ <option value="KOL+Kamerlingh onnes laboratorium">Kamerlingh onnes laboratorium</option>
+ <option value="HUM-KERN+Kerncurriculum letteren ">Kerncurriculum letteren </option>
+ <option value="HUM-KG+Kunstgeschiedenis">Kunstgeschiedenis</option>
+ <option value="HUM-LAS+Latijns-amerika studies">Latijns-amerika studies</option>
+ <option value="HUM-LUCL+Leiden univ. centre for linguistics">Leiden univ. centre for linguistics</option>
+ <option value="LUC+Leiden university college">Leiden university college</option>
+ <option value="LAK+Leids academisch kunstcentrum">Leids academisch kunstcentrum</option>
+ <option value="HUM-CNWS+Letteren - cnws">Letteren - cnws</option>
+ <option value="HUM-LITW+Literatuurwetenschap">Literatuurwetenschap</option>
+ <option value="HUM-MO+Midden oosten">Midden oosten</option>
+ <option value="HUM-NED+Nederlandse taal en cultuur">Nederlandse taal en cultuur</option>
+ <option value="HUM-NP+Nieuw-perzische taal en cultuur">Nieuw-perzische taal en cultuur</option>
+ <option value="HUM-OCMW+Oude culturen van de mediterrane wereld">Oude culturen van de mediterrane wereld</option>
+ <option value="HUM-PKST+Praktijkstudies">Praktijkstudies</option>
+ <option value="HUM-SLAV+Slavische talen en culturen">Slavische talen en culturen</option>
+ <option value="INF+Subfaculteit informatica">Subfaculteit informatica</option>
+ <option value="WIS+Subfaculteit wiskunde">Subfaculteit wiskunde</option>
+ <option value="SYL+Sylvius laboratorium">Sylvius laboratorium</option>
+ <option value="HUM-TW+Taalwetenschap">Taalwetenschap</option>
+ <option value="HUM-IN+Talen & culturen v. z.o. azie & oceanie">Talen & culturen v. z.o. azie & oceanie</option>
+ <option value="HUM-TCMO+Talen & culturen van het midden oosten">Talen & culturen van het midden oosten</option>
+ <option value="TC+Talen centrum">Talen centrum</option>
+ <option value="HUM-TCMA+Talen en cult. v mesopotamie & anatolie">Talen en cult. v mesopotamie & anatolie</option>
+ <option value="HUM-AFRI+Talen en culturen van africa">Talen en culturen van africa</option>
+ <option value="HUM-CHIN+Talen en culturen van china">Talen en culturen van china</option>
+ <option value="HUM-TCIA+Talen en culturen van indiaans amerika">Talen en culturen van indiaans amerika</option>
+ <option value="HUM-KOR+Tc korea">Tc korea</option>
+ <option value="HUM-JAP+Tc van japan">Tc van japan</option>
+ <option value="HUM-ZCA+Tcit talen &  culturen v india en tibet">Tcit talen &  culturen v india en tibet</option>
+ <option value="HUM-TURK+Turkse taal en cultuur">Turkse taal en cultuur</option>
+ <option value="SDKOG+Ufb servicedesk kog">Ufb servicedesk kog</option>
+ <option value="BUR+Ufb/cluster binnenstad ">Ufb/cluster binnenstad </option>
+ <option value="UFB+Universitair facilitair bedrijf">Universitair facilitair bedrijf</option>
+ <option value="HUM-VIET+Vergelijk. indo-europese taalwet.schap">Vergelijk. indo-europese taalwet.schap</option>
+ <option value="HUM-VTW+Vergelijkende taalwetenschap">Vergelijkende taalwetenschap</option>
+ <option value="HUM-WYSB+Wijsbegeerte">Wijsbegeerte</option>
+ <option value="WSD+Witte singel doelencomplex - alg dienst">Witte singel doelencomplex - alg dienst</option>
+</select>
+<br><br><select name="selgebouw">
+<option value="_ALL_">Alle gebouwen</option> <option value="ACAD+ACAD - Academiegebouw">ACAD - Academiegebouw</option>
+ <option value="ARSENAAL+ARSENAAL - Arsenaal">ARSENAAL - Arsenaal</option>
+ <option value="AVANBUEREN+AVANBUEREN - Leiden University College The Hague">AVANBUEREN - Leiden University College The Hague</option>
+ <option value="BROODFABR+BROODFABR - De Broodfabriek">BROODFABR - De Broodfabriek</option>
+ <option value="CDH-DIL+CDH-DIL - Theater Diligentia">CDH-DIL - Theater Diligentia</option>
+ <option value="CDH-EXTERN+CDH-EXTERN - extern gebouw">CDH-EXTERN - extern gebouw</option>
+ <option value="CDH-FOKKER+CDH-FOKKER - Fokker terminal">CDH-FOKKER - Fokker terminal</option>
+ <option value="CDH-HOUTZ+CDH-HOUTZ - De Houtzagerij">CDH-HOUTZ - De Houtzagerij</option>
+ <option value="CDH-KLOOST+CDH-KLOOST - Kloosterkerk">CDH-KLOOST - Kloosterkerk</option>
+ <option value="CDH-KS+CDH-KS - Koninklijke Schouwburg">CDH-KS - Koninklijke Schouwburg</option>
+ <option value="CDH-LV+CDH-LV - Lange Voorhout">CDH-LV - Lange Voorhout</option>
+ <option value="CDH-NEWBAB+CDH-NEWBAB - New Babylon">CDH-NEWBAB - New Babylon</option>
+ <option value="CDH-NWKERK+CDH-NWKERK - Nieuwe Kerk">CDH-NWKERK - Nieuwe Kerk</option>
+ <option value="CDH-OPERA+CDH-OPERA - Zalencentrum Opera">CDH-OPERA - Zalencentrum Opera</option>
+ <option value="CDH-OPNUNI+CDH-OPNUNI - Open Universiteit">CDH-OPNUNI - Open Universiteit</option>
+ <option value="CDH-SCHOUW+CDH-SCHOUW - Schouwburgstraat">CDH-SCHOUW - Schouwburgstraat</option>
+ <option value="CDH-SH+CDH-SH - Stichthage">CDH-SH - Stichthage</option>
+ <option value="CDH-TAHS+CDH-TAHS - Theater aan het Spui">CDH-TAHS - Theater aan het Spui</option>
+ <option value="CDH-WLDFRM+CDH-WLDFRM - World Forum">CDH-WLDFRM - World Forum</option>
+ <option value="CDH-WYNHVN+CDH-WYNHVN - Wijnhaven">CDH-WYNHVN - Wijnhaven</option>
+ <option value="CONSERV+CONSERV - Koninklijk Conservatorium">CONSERV - Koninklijk Conservatorium</option>
+ <option value="EXTERN+EXTERN - ">EXTERN - </option>
+ <option value="EYCKH1+EYCKH1 - Nederlandse Taal">EYCKH1 - Nederlandse Taal</option>
+ <option value="EYCKH2+EYCKH2 - Duits / Slavisch">EYCKH2 - Duits / Slavisch</option>
+ <option value="EYCKH3+EYCKH3 - Letteren">EYCKH3 - Letteren</option>
+ <option value="EYCKH4+EYCKH4 - Engels">EYCKH4 - Engels</option>
+ <option value="GORL+GORL - Gorlaeus Laboratoria">GORL - Gorlaeus Laboratoria</option>
+ <option value="GRAV+GRAV - Gravensteen">GRAV - Gravensteen</option>
+ <option value="HHS+HHS - Haagse Hogeschool">HHS - Haagse Hogeschool</option>
+ <option value="HOLIDAYINN+HOLIDAYINN - Holiday Inn Leiden">HOLIDAYINN - Holiday Inn Leiden</option>
+ <option value="HOOGLK+HOOGLK - Hooglandse Kerk">HOOGLK - Hooglandse Kerk</option>
+ <option value="HUIZINGA+HUIZINGA - Klassieke taal">HUIZINGA - Klassieke taal</option>
+ <option value="HUYGENS+HUYGENS - Huygens Lab.">HUYGENS - Huygens Lab.</option>
+ <option value="IJSHAL+IJSHAL - IJshal Menkenbaan">IJSHAL - IJshal Menkenbaan</option>
+ <option value="KOG+KOG - Kamerlingh Onnes Gebouw">KOG - Kamerlingh Onnes Gebouw</option>
+ <option value="LCP+LCP - Practicumgebouw">LCP - Practicumgebouw</option>
+ <option value="LIPSIUS+LIPSIUS - Centraal Fac. gebouw">LIPSIUS - Centraal Fac. gebouw</option>
+ <option value="LUMC-1+LUMC-1 - LUMC gebouw 1">LUMC-1 - LUMC gebouw 1</option>
+ <option value="LUMC-2+LUMC-2 - LUMC gebouw 2">LUMC-2 - LUMC gebouw 2</option>
+ <option value="LUMC-3+LUMC-3 - LUMC gebouw 3">LUMC-3 - LUMC gebouw 3</option>
+ <option value="N.A+N.A - Not Applicable - Locatie nader te bepalen">N.A - Not Applicable - Locatie nader te bepalen</option>
+ <option value="PATHOL+PATHOL - Pathologie">PATHOL - Pathologie</option>
+ <option value="PDLC+PDLC - Pieter de la Courtgebouw">PDLC - Pieter de la Courtgebouw</option>
+ <option value="PJVETH+PJVETH - IIAS">PJVETH - IIAS</option>
+ <option value="PKERK+PKERK - Pieterskerk">PKERK - Pieterskerk</option>
+ <option value="RAP70+RAP70 - Rapenburg 70">RAP70 - Rapenburg 70</option>
+ <option value="REG+REG - Theater De Regentes">REG - Theater De Regentes</option>
+ <option value="REUVENS+REUVENS - KITLV/Arch/Palestijnse oudheden">REUVENS - KITLV/Arch/Palestijnse oudheden</option>
+ <option value="SNELLIUS+SNELLIUS - Rekencentrum/Informatiseringsgroep">SNELLIUS - Rekencentrum/Informatiseringsgroep</option>
+ <option value="STEEN+STEEN - van Steenis gebouw">STEEN - van Steenis gebouw</option>
+ <option value="STERREW+STERREW - Sterrewacht">STERREW - Sterrewacht</option>
+ <option value="STGEHZL+STGEHZL - Stads Gehoorzaal">STGEHZL - Stads Gehoorzaal</option>
+ <option value="SYLVIUS+SYLVIUS - Sylvius lab">SYLVIUS - Sylvius lab</option>
+ <option value="UB+UB - Universiteits Bibliotheek">UB - Universiteits Bibliotheek</option>
+ <option value="UITHOF+UITHOF - ">UITHOF - </option>
+ <option value="USC+USC - Universitair sportcentrum">USC - Universitair sportcentrum</option>
+ <option value="VRIESH1+VRIESH1 - Godgeleerdheid">VRIESH1 - Godgeleerdheid</option>
+ <option value="VRIESH2+VRIESH2 - Inst. Ned. Lexicologie">VRIESH2 - Inst. Ned. Lexicologie</option>
+ <option value="VRIESH3+VRIESH3 - Midden Oosten Studies">VRIESH3 - Midden Oosten Studies</option>
+ <option value="VRIESH4+VRIESH4 - CIF/NINO/Hebreeuws">VRIESH4 - CIF/NINO/Hebreeuws</option>
+ <option value="WIJKPL2+WIJKPL2 - Franse Taal- en Letterkunde">WIJKPL2 - Franse Taal- en Letterkunde</option>
+ <option value="WIJKPL3+WIJKPL3 - Spaans / Italiaans">WIJKPL3 - Spaans / Italiaans</option>
+ <option value="WIJKPL4+WIJKPL4 - Taalwetenschappen / Afrikaans">WIJKPL4 - Taalwetenschappen / Afrikaans</option>
+</select>
+<br><br>Kies een sortering<br><table with=100% border=0 cellpadding=1 cellspacing=1><tr><td><input type=radio name=zrssort value=aanvangstijd checked></td><td>Aanvangstijd</td></tr><tr><td><input type=radio name=zrssort value=gebouw en aanvangstijd ></td><td>Per gebouw op aanvangstijd</td></tr><tr><td><input type=radio name=zrssort value=activiteit ></td><td>Activiteit</td></tr><tr><td><input type=radio name=zrssort value=locatie ></td><td>Locatie</td></tr></table><br><table with=100% border=0 cellpadding=1 cellspacing=1><tr><td>zoek op -een deel van de- gebruikersnaam</td></tr><tr><td><input type=text name=gebruiker VALUE= ></td></tr><tr><td>zoek op -een deel van de- aanvragersnaam of -persooon</td></tr><tr><td><input type=text name=aanvrager VALUE= ></td></tr><tr><td>zoek op -een deel van de- activiteit</td></tr><tr><td><input type=text name=activiteit VALUE=></td></tr></table><br><input type=submit name=submit value=Uitvoeren><br><br><br><font size=-1> <i> <a href=http://www.ufb.leidenuniv.nl/servicedesk/algemeen/zalenreservering-universiteit.html
+ target=_new>klik hier voor meer informatie over zalenreservering</a>, </i></font></body></html>

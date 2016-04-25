@@ -40,10 +40,30 @@ class ZRSReader
         $document = $this->getSearchPage();
         $xpath    = new DOMXPath($document);
 
-        /* @var $options DOMNodeList */
         $options = $xpath->query("//select[@name=\"selgebouw\"]/option");
 
-        return $options->length;
+        return $this->getOptionValues($options);
+    }
+
+    public function getOrganisations()
+    {
+        $document = $this->getSearchPage();
+        $xpath = new DOMXPath($document);
+
+        $options = $xpath->query("//select[@name=\"res_instantie\"]/option");
+
+        return $this->getOptionValues($options);
+    }
+
+    private function getOptionValues(DOMNodeList $options)
+    {
+        $output = [];
+
+        foreach ($options as $option) {
+            $output[] = $option->getAttribute('value');
+        }
+
+        return $output;
     }
 
     /**

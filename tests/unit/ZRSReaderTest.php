@@ -1,7 +1,13 @@
 <?php
+
 namespace zrslib\tests\unit;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit_Framework_TestCase;
+use zrslib\ZRSReader;
 
 /**
  * Test cases for the ZRS reader class.
@@ -10,12 +16,38 @@ use PHPUnit_Framework_TestCase;
  */
 class ZRSReaderTest extends PHPUnit_Framework_TestCase
 {
+
     public function testGetBuildings()
     {
-        $instance = \zrslib\ZRSReader::getInstance();
+        $mock = new MockHandler([
+            new Response(200, [], file_get_contents(__DIR__.'/searchpage.html')),
+        ]);
 
-        $result = $instance->getBuildings();
+        $handler = HandlerStack::create($mock);
+        $client  = new Client(['handler', $handler]);
 
-        $this->assertEquals(64, $result);
+        $instance = new ZRSReader($client);
+
+        $result  = $instance->getBuildings();
+        $correct = require 'buildings.php';
+
+        $this->assertEquals($correct, $result);
+    }
+
+    public function testGetOrganisations()
+    {
+        $mock = new MockHandler([
+            new Response(200, [], file_get_contents(__DIR__.'/searchpage.html')),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client  = new Client(['handler', $handler]);
+
+        $instance = new ZRSReader($client);
+
+        $result = $instance->getOrganisations();
+        $correct = require 'organisations.php';
+
+        $this->assertEquals($correct, $result);
     }
 }
