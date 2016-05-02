@@ -55,6 +55,12 @@ class ZRSReader
         return $this->getOptionValues($options);
     }
 
+    /**
+     * Get all the option values from a list of option elements.
+     *
+     * @param DOMNodeList $options
+     * @return array
+     */
     private function getOptionValues(DOMNodeList $options)
     {
         $output = [];

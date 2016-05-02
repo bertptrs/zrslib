@@ -5,3 +5,4 @@ vendor
 
 # Ignore vim swap files
 *.swp
+.idea
