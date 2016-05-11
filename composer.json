@@ -2,7 +2,8 @@
     "name": "bertptrs/zrslib",
     "description": "A library for querying the Leidenuniv ZRS.",
     "require": {
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "php": ">=5.6"
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.8",
