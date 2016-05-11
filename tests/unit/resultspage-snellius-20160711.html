@@ -1,0 +1,51 @@
+
+<!-- saved from url=(0037)http://zrs.leidenuniv.nl/ul/query.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script>
+var clockid=new Array()
+var clockidoutside=new Array()
+var i_clock=-1
+var thistime= new Date()
+var hours=thistime.getHours()
+var minutes=thistime.getMinutes()
+var seconds=thistime.getSeconds()
+if (eval(hours) <10) {hours="0"+hours}
+if (eval(minutes) < 10) {minutes="0"+minutes}
+if (seconds < 10) {seconds="0"+seconds}
+var thistime = hours+":"+minutes+"::"+seconds 
+function writeclock() {
+    i_clock++
+    if (document.all || document.getElementById || document.layers) {
+        clockid[i_clock]="clock"+i_clock
+        document.write("<span id='"+clockid[i_clock]
+        +"' style='position:relative'>"+thistime+"</span>" )
+    }
+} 
+function clockon() {
+    thistime= new Date()
+    hours=thistime.getHours()
+    minutes=thistime.getMinutes()
+    seconds=thistime.getSeconds()
+    if (eval(hours) <10) {hours="0"+hours}
+    if (eval(minutes) < 10) {minutes="0"+minutes}
+    if (seconds < 10) {seconds="0"+seconds}
+    thistime = hours+":"+minutes 
+if (document.all) {
+        for (i=0;i<=clockid.length-1;i++) {
+            var thisclock=eval(clockid[i])
+            thisclock.innerHTML=thistime
+        }
+    } 
+if (document.getElementById) {
+        for (i=0;i<=clockid.length-1;i++) {
+            document.getElementById(clockid[i]).innerHTML=thistime
+        }
+    }
+    var timer=setTimeout("clockon()",1000)
+}
+window.onload=clockon
+</script> 
+
+<!--Co Dreef / Eelco de Graaff Faculteit der Rechtsgeleerdheid Universiteit Leiden--><!--e-mail j.dreef@law.leidenuniv.nl --><title>ZRS - Raadplegen Zaal Reservering Systeem</title><link rel="StyleSheet" href="./resultspage-snellius-20160711_files/ul_style.css" title="Universiteit Leiden"><meta name="Generator" content="PHP"><meta name="Author" content="Co Dreef / Eelco de Graaff"><meta name="Keywords" content="Zaal Reservering Systeem"><meta name="Description" content="Dynamic query ZRS v2011.1"><meta http-equiv="REFRESH" content="300;URL=start.php"></head><body><center><h3>ZRS informatie voor organisatie: alle, gebouw: SNELLIUS - Rekencentrum/Informatiseringsgroep, sortering op aanvangstijd.<br>Reserveringen voor maandag 11-7-2016 week 28.<br></h3></center><center><h4><a href="http://zrs.leidenuniv.nl/ul/start.php" target="_top">Terug</a> <a href="http://zrs.leidenuniv.nl/ul/gebouw.php" target="_top">Adresgegevens locaties</a></h4></center><center><table width="90%" border="0" cellpadding="0" cellspacing="1"><tbody><tr><td bgcolor="#666699"><font color="#FFFFFF"><p><b>  &nbsp;Tijd </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b>  &nbsp;Locatie </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Soort act. </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Pers </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Tbv. </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b>  &nbsp;Groep&nbsp;  </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b>  &nbsp;Activiteit </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b>  &nbsp;Gebruiker </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Aanvrager </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Aanvr.pers </b></p></font></td><td bgcolor="#666699"><font color="#FFFFFF"><p><b> &nbsp;Aanvr.nr </b></p></font></td></tr><tr><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;14:00 17:30</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;SNELLIUS/407-409</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;hertentame</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;24</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;wis</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;Hertent.Multivar. anal.</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;StatSci</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;Mathematisch Instituut</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;Lubke, M.</p></td><td nowrap="" bgcolor="#FFFFCC"><p> &nbsp;A571544</p></td></tr><tr></tr></tbody></table></center>
+
+
+</body></html>

@@ -55,7 +55,12 @@ class ZRSReaderTest extends PHPUnit_Framework_TestCase
     
     public function testGetReservations()
     {
-        $client = new Client();
+        $mock = new MockHandler([
+            new Response(200, [], file_get_contents(__DIR__.'/resultspage-snellius-20160711.html')),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client  = new Client(['handler', $handler]);
         $instance = new ZRSReader($client);
 
         $parameters = $expected = [
