@@ -72,6 +72,46 @@ class ZRSReader
         return $output;
     }
 
+    public function getReservations(array $config = [])
+    {
+        $parameters = (new ZRSRequestBuilder($config))->build();
+        $response = $this->client->post(self::ZRS_LOCATION . self::RESULTS_LOCATION, [
+            'form_params' => $parameters,
+        ]);
+
+        $requestDate = (new \DateTimeImmutable())
+            ->setDate($parameters['year'], $parameters['month'], $parameters['day']);
+
+        $document = $this->parseHTML($response->getBody()->getContents());
+        $reservationRows = (new DOMXPath($document))->query('//tr[td/@bgcolor != \'#666699\']');
+        $reservations = [];
+        foreach ($reservationRows as $reservationRow) {
+            $timings = $this->trim($reservationRow->firstChild->textContent);
+            list($start, $end) = explode(" ", $timings);
+            $location = $this->trim($reservationRow->childNodes->item(1)->firstChild->textContent);
+            $activity = $this->trim($reservationRow->childNodes->item(6)->textContent);
+
+            $reservations[] = new Reservation(
+                $this->createCombinedDateTime($requestDate, $start),
+                $this->createCombinedDateTime($requestDate, $end),
+                $location, $activity
+            );
+        }
+
+        return $reservations;
+    }
+
+    private function trim($string) {
+        return trim($string, chr(0xC2).chr(0xA0) . " \n");
+    }
+
+    private function createCombinedDateTime(\DateTimeImmutable $date, $time)
+    {
+        list($hours, $minutes) = explode(":", $time);
+
+        return $date->setTime((int) $hours, (int) $minutes);
+    }
+
     /**
      * Get the search page as a DOM document.
      *
